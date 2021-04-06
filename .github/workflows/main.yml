@@ -1,6 +1,13 @@
-- name: Publish Module to PowerShell Gallery
+name: Automated publish Actions
+on: push
+
+jobs:
+  publish-module:
+    name: Publish Module to PowerShell Gallery
+
+    steps:
+      - name: perform publish
         uses: pcgeek86/publish-powershell-module-action@v19
-        id: publish-module
         with:
           modulePath: vPOSH.Core
           NuGetApiKey: ${{ secrets.PS_GALLERY_KEY }}
