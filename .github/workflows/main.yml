@@ -4,6 +4,7 @@ on: push
 jobs:
   publish-module:
     name: Publish Module to PowerShell Gallery
+    runs-on: ubuntu-latest
 
     steps:
       - name: perform publish
