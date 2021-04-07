@@ -10,5 +10,5 @@ jobs:
       - name: perform publish
         uses: pcgeek86/publish-powershell-module-action@v19
         with:
-          modulePath: Modules
+          modulePath: vPOSH.Core
           NuGetApiKey: ${{ secrets.PS_GALLERY_KEY }}
