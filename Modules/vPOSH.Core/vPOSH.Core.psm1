@@ -1957,6 +1957,12 @@ New-VIProperty -ObjectType VMHost -Name SerialNumber -Value {
 
 					(Get-EsxCli -VMHost $viServer).hardware.platform.get().SerialNumber
 				} -Force -WarningAction SilentlyContinue
+
+New-VIProperty -Name LastBootTime -ObjectType VirtualMachine -Value {
+					param($vm)
+
+					get-stat -Entity $vm -Stat sys.uptime.latest -MaxSamples 1 -Realtime | select @{N="LastBoot";E={(Get-Date).AddSeconds(- $_.value).ToString("MM/dd/yyyy HH:mm:ss")}}
+				} -Force
 #endregion
 
 #region "Custom Alias definitions"
